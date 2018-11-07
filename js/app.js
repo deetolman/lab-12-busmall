@@ -1,14 +1,16 @@
 import html from '../html.js';
 import productsApi from '../data/products-api.js';
+import ProductSelector from './product-selector.js';
 
 const products = productsApi.getAll();
 
 function makeTemplate() {
     return html`
-    <h1>Hello World</h1>
+    <h1>Please click on an image</h1>
     <main>
     <section id="product-list">
-    <p>Vote for a product!</p>
+    <h2>Vote for your favorite<h2>
+    <p></p>
     </section>
     </main>
     `;
@@ -17,8 +19,9 @@ class SurveyApp {
     render() {
         const dom = makeTemplate();
         const mainSection = dom.querySelector('main');
-        const productSelector = new productSelector(products);
-        mainSection.appendChild(productSelector(products));
+        const productSelector = new ProductSelector(products);
+        
+        mainSection.appendChild(productSelector.render());
         return dom;
     }
 }
