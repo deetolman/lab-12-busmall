@@ -1,14 +1,4 @@
-// let json = window.localStorage.getItem('products');
 
-// let products = null;
-
-// if(json) {
-//     products = JSON.parse(json);
-// } else {
-//     products = createProducts();
-// }
-
-// function createProducts() {
 let products = 
 [{
     name:'bag',
@@ -62,7 +52,7 @@ let products =
     clickedCount:'0'
 },
 { name:'cthulhu',
-    image: '../assets/cthulhu.png',
+    image: '../assets/cthulhu.jpg',
     viewCount:'0',
     clickedCount:'0'
 },
@@ -123,6 +113,19 @@ const productApi = {
             products = JSON.parse(json);
         }
         return products;
+    },
+
+    getRandomProducts: function(){
+        let imageDisplay = [];
+
+        while(imageDisplay.length < 3) {
+            let randomIndex = Math.floor(Math.random() * products.length);
+            let product = products[randomIndex];
+            if(!products.includes(product)) {
+                imageDisplay.push(product);
+            }
+        }
+        return imageDisplay;
     }
 };
 
