@@ -1,107 +1,33 @@
-let products = [
-    {
-        name:'bag',
-        image: '../assets/bag.jpg',
-        viewCount:'0',
-        clickedCount:'0'
-    },
-    { name:'banana',
-        image: '../assets/banana.jpg',
-        viewCount:'0',
-        clickedCount:'0'
-    },
-    { name:'bathroom',
-        image: '../assets/bathroom.jpg',
-        viewCount:'0',
-        clickedCount:'0'
-    },
-    { name:'boots',
-        image: '../assets/boots.jpg',
-        viewCount:'0',
-        clickedCount:'0'
-    },
-    { name:'bubblegum',
-        image: '../assets/bubblegum.jpg',
-        viewCount:'0',
-        clickedCount:'0'
-    },
-    { name:'usb',
-        image: '../assets/usb.gif',
-        viewCount:'0',
-        clickedCount:'0'
-    },
-    { name:'sweep',
-        image: '../assets/sweep.png',
-        viewCount:'0',
-        clickedCount:'0'
-    },
-    { name:'breakfast',
-        image: '../assets/breakfast.jpg',
-        viewCount:'0',
-        clickedCount:'0'
-    },
-    { name:'chair',
-        image: '../assets/chair.jpg',
-        viewCount:'0',
-        clickedCount:'0'
-    }, 
-    { name:'usb',
-        image: '../assets/usb.gif',
-        viewCount:'0',
-        clickedCount:'0'
-    },
-    { name:'cthulhu',
-        image: '../assets/cthulhu.png',
-        viewCount:'0',
-        clickedCount:'0'
-    },
-    { name:'dog-duck',
-        image: '../assets/dog-duck.jpg',
-        viewCount:'0',
-        clickedCount:'0'
-    },
-    { name:'dragon',
-        image: '../assets/dragon.jpg',
-        viewCount:'0',
-        clickedCount:'0'
-    },
-    { name:'pen',
-        image: '../assets/pen.jpg',
-        viewCount:'0',
-        clickedCount:'0'
-    },
-    { name:'pet-sweep',
-        image: '../assets/pet-sweep.jpg',
-        viewCount:'0',
-        clickedCount:'0'
-    },
-    { name:'scissors',
-        image: '../assets/scissors.jpg',
-        viewCount:'0',
-        clickedCount:'0'
-    },
-    { name:'tauntaun',
-        image: '../assets/tauntaun.jpg',
-        viewCount:'0',
-        clickedCount:'0'
-    },
-    { name:'unicorn',
-        image: '../assets/unicorn.jpg',
-        viewCount:'0',
-        clickedCount:'0'
-    },
-    { name:'water-can',
-        image: '../assets/water-can.jpg',
-        viewCount:'0',
-        clickedCount:'0'
-    },
-    { name:'wine-glass',
-        image: '../assets/wine-glass.jpg',
-        viewCount:'0',
-        clickedCount:'0'
-    },
-];
+import html from '../html.js';
 
-export default products;
+function makeTemplate(product) {
+    return html`
+        <li class="product">
+            <h3>${product.name}</h3>
+            <img src="../assets/${product.image}">
 
+        </li>
+    `;
+}
 
+class ProductCard {
+    constructor(product, onSelect) {
+        this.product = product;
+        this.onSelect = onSelect;
+    }
+
+    render() {
+        const dom = makeTemplate(this.product);
+        const listItem = dom.querySelector('li');
+        const product = this.product;
+
+        if(this.onSelect) {
+            listItem.addEventListener('click', () => {
+                this.onSelect(product);
+            });
+        }
+        return dom;
+    }
+}
+
+export default ProductCard;

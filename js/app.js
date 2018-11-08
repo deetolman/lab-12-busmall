@@ -1,35 +1,31 @@
+import productApi from '../data/product-api.js';
 import html from '../html.js';
-import productsApi from '../data/products-api.js';
 import ProductSelector from './product-selector.js';
 
-const products = productsApi.getAll();
+const products = productApi.getAll();
 
-function makeTemplate() {
+function makeTemplate() { 
     return html`
-    <h1>Please click on an image</h1>
+    <header>
+    </header>
+    <div></div>
     <main>
-    <section id="product-list">
-    <h2>Vote for your favorite<h2>
-    <p></p>
-    </section>
+    <section class="product-selector"></section>
+    <section id""></section>
     </main>
     `;
 }
-class SurveyApp {
+
+class App {
     render() {
         const dom = makeTemplate();
-        const mainSection = dom.querySelector('main');
+        const productSelectorSection = dom.querySelector('.product-selector');
         const productSelector = new ProductSelector(products);
-        
-        mainSection.appendChild(productSelector.render());
+        productSelectorSection.appendChild(productSelector.render());
+
         return dom;
     }
 }
 
-const surveyApp = new SurveyApp();
-const root = document.getElementById('root');
-root.appendChild(surveyApp.render());
-
-
-
-
+const app = new App();
+document.getElementById('root').appendChild(app.render());
