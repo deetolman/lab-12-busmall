@@ -12,20 +12,33 @@ class ProductSelector {
         this.products = products;
         this.onSelect = onSelect;
     }
-
+    getRandomIndex(arrayLength) {
+        return Math.floor(Math.random() * arrayLength);
+    }
+    getRandomThree() {
+        //todo: logic for duplicates
+        const randomProducts = [];
+        const products = this.products;
+        for(let i = 0; i < 3; i++) {
+            const newIndex = this.getRandomIndex(products.length);
+            randomProducts.push(products[newIndex]);
+        }
+        return randomProducts;
+    }
+    displayRandomThree() {
+        const randomProducts = this.getRandomThree();
+        randomProducts.forEach(product => {
+            const productCard = new ProductCard(product, this.onSelect);
+            this.list.appendChild(productCard.render());
+        });
+    }
+    
     render() {
         const dom = makeTemplate();
         this.list = dom.querySelector ('ul');
-
-        for(let i = 0; i < this.products.length; i++) {
-            this.add(this.products[i]);
-        }
+        this.displayRandomThree();
         return dom;        
     }
-    add(product) {
-        const productCard = new ProductCard(product, this.products, this.onSelect);
-        this.list.appendChild(productCard.render());
-    } 
 }
 
 export default ProductSelector;
