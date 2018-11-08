@@ -1,0 +1,10 @@
+body {
+    font-family: sans-serif;
+    background-color: whitesmoke;
+    color: #323031;
+}
+img {
+    display:flex;
+    height: 100px;
+    width: 100px;
+}
