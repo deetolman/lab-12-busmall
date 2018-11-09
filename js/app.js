@@ -20,7 +20,10 @@ class App {
     render() {
         const dom = makeTemplate();
         const productSelectorSection = dom.querySelector('.product-selector');
-        const productSelector = new ProductSelector(products);
+        const productSelector = new ProductSelector(products, survey => {
+            console.log('survey', survey);
+            //save survey via api, redirect to results, 
+        });
         productSelectorSection.appendChild(productSelector.render());
 
         return dom;

@@ -3,7 +3,7 @@ import html from '../html.js';
 let template = function(product) {
     return html`
         <li class="product">
-            <h3>${product.name}</h3>
+            <h3 class="product-name">${product.name}</h3>
             <img src="../assets/${product.image}" alt="${product.name}">
         </li>
     `;
@@ -20,11 +20,9 @@ export default class ProductCard {
         this.li = dom.querySelector('li');
         let product = this.product;
 
-        // if(this.onSelect) {
         this.li.addEventListener('click', () => {
             console.log('click', product);
-            product.clickedCount++;
-            // this.onSelect(product);
+            this.onSelect(product);
         });
         // }
     

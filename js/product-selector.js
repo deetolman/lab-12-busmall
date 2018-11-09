@@ -8,14 +8,17 @@ function makeTemplate() {
 }
 
 class ProductSelector {
-    constructor(products, onSelect) {
+    constructor(products, onComplete) {
         this.products = products;
-        this.onSelect = onSelect;
+        this.onComplete = onComplete;
         this.lastThree = [];
+        this.imageDisplayed = [];
+        this.rounds = 25;
+    
+
     }        
     getRandomIndex(arrayLength) {
         return Math.floor(Math.random() * arrayLength);
-        //view count
     }
     getRandomThree() {
         const randomProducts = [];
@@ -25,21 +28,35 @@ class ProductSelector {
             const product = products[newIndex];
             if(randomProducts.includes(product) || this.lastThree.includes(product)) {
                 i--;
-                console.log('dups');
             } else {
                 randomProducts.push(products[newIndex]);
             }
         } 
         this.lastThree = randomProducts;
-        console.log('lastThree', this.lastThree);
         return randomProducts;
     }
     displayRandomThree() {
         const randomProducts = this.getRandomThree();
         randomProducts.forEach(product => {
-            const productCard = new ProductCard(product, this.onSelect);
+            product.viewCount++;
+            const productCard = new ProductCard(product, selected => {
+                selected.clickedCount++;
+                this.rounds--;
+                if(this.rounds > 0) {
+                    this.clearProducts();
+                    this.displayRandomThree();
+                } else {
+                    this.onComplete(this.products);          
+                }
+            });
             this.list.appendChild(productCard.render());
         });
+    }
+
+    clearProducts() {
+        while(this.list.lastElementChild) {
+            this.list.lastElementChild.remove();
+        }
     }
     
     render() {

@@ -4,6 +4,11 @@ body {
     color: #323031;
     width: 60%;
 }
+.product {
+    display: inline-table;
+    flex-wrap: nowrap;
+    margin:auto;
+}
 img {
-    width:50%;
+    width:80px;
 }

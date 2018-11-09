@@ -46,11 +46,6 @@ let products =
     viewCount:'0',
     clickedCount:'0'
 }, 
-{ name:'usb',
-    image: '../assets/usb.gif',
-    viewCount:'0',
-    clickedCount:'0'
-},
 { name:'cthulhu',
     image: '../assets/cthulhu.jpg',
     viewCount:'0',
