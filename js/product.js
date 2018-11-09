@@ -18,9 +18,16 @@ export default class ProductCard {
     render() {
         let dom = template(this.product);
         this.li = dom.querySelector('li');
+        let product = this.product;
+
+        // if(this.onSelect) {
         this.li.addEventListener('click', () => {
-            this.onSelect(this.product);
+            console.log('click', product);
+            product.clickedCount++;
+            // this.onSelect(product);
         });
+        // }
+    
         
         return dom;
     }

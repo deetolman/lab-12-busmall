@@ -115,18 +115,18 @@ const productApi = {
         return products;
     },
 
-    getRandomProducts: function(){
-        let imageDisplay = [];
+    // getRandomProducts: function(){
+    //     let imageDisplay = [];
 
-        while(imageDisplay.length < 3) {
-            let randomIndex = Math.floor(Math.random() * products.length);
-            let product = products[randomIndex];
-            if(!products.includes(product)) {
-                imageDisplay.push(product);
-            }
-        }
-        return imageDisplay;
-    }
+    //     while(imageDisplay.length < 3) {
+    //         let randomIndex = Math.floor(Math.random() * products.length);
+    //         let product = products[randomIndex];
+    //         if(!products.includes(product)) {
+    //             imageDisplay.push(product);
+    //         }
+    //     }
+    //     return imageDisplay;
+    // }
 };
 
 export default productApi;
