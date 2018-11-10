@@ -1,7 +1,7 @@
 import html from '../html.js';
 import productApi from '../data/product-api.js';
 import ProductSelector from './product-selector.js';
-
+    
 const products = productApi.getAll();
 
 function makeTemplate() { 
@@ -22,6 +22,7 @@ class App {
         const productSelectorSection = dom.querySelector('.product-selector');
         const productSelector = new ProductSelector(products, survey => {
             console.log('survey', survey);
+            // window.location.href = '';
             //save survey via api, redirect to results, 
         });
         productSelectorSection.appendChild(productSelector.render());
