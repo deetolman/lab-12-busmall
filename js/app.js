@@ -1,8 +1,8 @@
 import html from '../html.js';
 import productApi from '../data/product-api.js';
-import surveyApi from '../data/survey-api.js';
+// import surveyApi from '../data/survey-api.js';
 import ProductSelector from './product-selector.js';
-import ViewingChart from '../js/viewing-chart.js';
+// import ViewingChart from '../js/viewing-chart.js';
     
 const products = productApi.getAll();
 
@@ -19,13 +19,13 @@ function makeTemplate() {
 
 class App {
     constructor() {
-        this.surveyData = surveyApi.getAll();
+            // this.surveyData = surveyApi.getAll();
     }
     render() {
         const dom = makeTemplate();
         const productSelectorSection = dom.querySelector('.product-selector');
-        const chartSection = dom.querySelector('.report-survey');
-        const viewingChart = new ViewingChart(this.surveyData);
+        // const chartSection = dom.querySelector('.report-survey');
+        // const viewingChart = new ViewingChart(this.surveyData);
         const productSelector = new ProductSelector(products, survey => {
             ('survey', survey);
             this.survey = products.map(product => {
@@ -42,7 +42,7 @@ class App {
             //save survey via api, redirect to results, 
         });
         productSelectorSection.appendChild(productSelector.render());
-        chartSection.appendChild(viewingChart.render());
+        // chartSection.appendChild(viewingChart.render());
         return dom;
     }
 }
