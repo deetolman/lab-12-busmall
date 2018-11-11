@@ -9,7 +9,7 @@ let template = function(product) {
     `;
 };
 
-export default class ProductCard {
+class ProductCard {
     constructor(product, onSelect) {
         this.product = product;
         this.onSelect = onSelect;
@@ -21,13 +21,10 @@ export default class ProductCard {
         let product = this.product;
 
         this.li.addEventListener('click', () => {
-            console.log('click', product);
             this.onSelect(product);
-        });
-        // }
-    
-        
+        });    
         return dom;
     }
 }
 
+export default ProductCard;

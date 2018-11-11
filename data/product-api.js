@@ -102,27 +102,24 @@ let products =
 // }
 
 const productApi = {
-    getAll() {
-        const json = localStorage.getItem('products');
-        if(json) {
-            products = JSON.parse(json);
-        }
-        return products;
+    saveSurvey(survey) {
+        localStorage.setItem('saveSurvey', JSON.stringify(survey));
     },
-
-    // getRandomProducts: function(){
-    //     let imageDisplay = [];
-
-    //     while(imageDisplay.length < 3) {
-    //         let randomIndex = Math.floor(Math.random() * products.length);
-    //         let product = products[randomIndex];
-    //         if(!products.includes(product)) {
-    //             imageDisplay.push(product);
-    //         }
-    //     }
-    //     return imageDisplay;
-    // }
+    getAll() {
+        return products;
+    }
 };
+
+
+//     getAll() {
+//         const json = localStorage.getItem('products');
+//         if(json) {
+//             products = JSON.parse(json);
+//         }
+//         return products;
+//     },
+
+// };
 
 export default productApi;
 

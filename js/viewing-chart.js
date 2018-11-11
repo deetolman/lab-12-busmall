@@ -1,40 +1,51 @@
 import html from '../html.js';
+// import productApi from '../data/product-api.js';
 
 function makeTemplate() {
     return html`
         <h2> Chart Summary</h2>
-        <div class="chart-summary">
+        <div class="viewing-chart">
+        <canvas></canvas>
+        </div>
     `;
 }
 
-export default class ProductChart {
-    constructor(products) {
-        this.products = products;
+export default class ViewingChart {
+    constructor(results) {
+        this.results = results;
     }
-
     render() {
         let dom = makeTemplate();
 
         const canvas = dom.querySelector('canvas');
         const ctx = canvas.getContext('2d');
 
+        const products = JSON.stringify(localStorage.getItem('saveSurvey'));
         let labels = [];
-        let data = [];
+        let viewCount = [];
+        let clickedCount = [];
 
-        for(let i = 0; i < this.products.length; i++) {
-            const product = this.products[i];
-            labels.push(product.name);
-            data.push(product.viewCount);
+        for(let i = 0; i < products.length; i++) {
+            labels.push(products[i].name);
+            viewCount.push(products[i].viewCount);
+            clickedCount.push(products[i].clickedCount);
+
         }
-        this.chart = new tu(ctx, {
+        this.chart = new Chart(ctx, {
             type: 'bar',
             data: {
                 labels: labels,
                 datasets: [{
                     label: '# of Views',
-                    data: data,
+                    data: clickedCount,
                     backgroundColor: 'rgba(54, 162, 235, 0.2)',
                     borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                },
+                { label: '# of clicks',
+                    data: viewCount,
+                    backgroundColor: 'blue',
+                    borderColor: 'black',
                     borderWidth: 1
                 }]
             },
