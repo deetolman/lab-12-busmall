@@ -1,16 +1,15 @@
-// let survey = [];
+let survey = [];
 
-// const surveyApi = {
-//     getAll() {
-//         const json = localStorage.getItem('saveSurvey');
-//         if(json) {
-//             return survey;
-//         }
-//     },
-    
-//     add(survey) {
-//         return survey;
-//     }
-// };
+const surveyApi = {
+    saveProducts() {
+        window.localStorage.setItem('products', JSON.stringify(survey));
+    },
+    getAll() {
+        return JSON.parse(window.localStorage.getItem('products'));
+    },
+    add(product) {
+        survey.push(product);
+    },
+};
 
-// export default surveyApi;
+export default surveyApi;

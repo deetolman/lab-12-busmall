@@ -23,6 +23,7 @@ class ProductCard {
         this.li.addEventListener('click', () => {
             this.onSelect(product);
         });    
+        this.li.src = this.product.image;
         return dom;
     }
 }

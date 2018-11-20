@@ -15,16 +15,6 @@ const productApi = {
     }
 };
 
-//     getAll() {
-//         const json = localStorage.getItem('products');
-//         if(json) {
-//             products = JSON.parse(json);
-//         }
-//         return products;
-//     },
-
-// };
-
 export default productApi;
 
 
