@@ -1,28 +1,31 @@
 import html from '../html.js';
 import productApi from '../data/product-api.js';
 // import surveyApi from '../data/survey-api.js';
-import ProductSelector from './product-selector.js';
+//import ProductSelector from './product-selector.js';
 // import ViewingChart from '../js/viewing-chart.js';
     
 const products = productApi.getAll();
 
 function makeTemplate() { 
     return html`
-    <header>Pick a product</header>
-    <div></div>
-    <main>
-    <section class="product-selector"></section>
-    <section class="report-survey"></section>
-    </main>
+        <header>Pick a product</header>
+        <main>
+        <li>
+            <section class="product-selector"></section>
+            <section class="report-survey"></section>
+        </li>
+        </main>
     `;
 }
 
 class App {
     constructor() {
+        this.products = productApi.getAll();
             // this.surveyData = surveyApi.getAll();
     }
     render() {
         const dom = makeTemplate();
+        this.list = dom.querySelector('li');
         const productSelectorSection = dom.querySelector('.product-selector');
         // const chartSection = dom.querySelector('.report-survey');
         // const viewingChart = new ViewingChart(this.surveyData);

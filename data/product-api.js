@@ -102,25 +102,18 @@ let products =
 // }
 
 const productApi = {
-    saveSurvey(survey) {
-        localStorage.setItem('saveSurvey', JSON.stringify(survey));
-    },
     getAll() {
-        return products;
+        const survey = products.map(product => {
+            return {
+                name: product.name,
+                image: product.image,
+                views: product.viewCount,
+                clicks: product.clickedCount
+            };
+        });
+
+        return survey;
     }
 };
 
-
-//     getAll() {
-//         const json = localStorage.getItem('products');
-//         if(json) {
-//             products = JSON.parse(json);
-//         }
-//         return products;
-//     },
-
-// };
-
 export default productApi;
-
-
