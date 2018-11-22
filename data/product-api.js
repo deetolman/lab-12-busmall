@@ -93,8 +93,8 @@ let products =
 },
 { name:'wine-glass',
     image: '../assets/wine-glass.jpg',
-    viewCount:'0',
-    clickedCount:'0'
+    views:'0',
+    clicks:'0'
 }];
 
 // function saveProducts() {
@@ -107,8 +107,8 @@ const productApi = {
             return {
                 name: product.name,
                 image: product.image,
-                views: product.viewCount,
-                clicks: product.clickedCount
+                views: 0,
+                clicks: 0
             };
         });
 
