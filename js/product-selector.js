@@ -12,7 +12,7 @@ class ProductSelector {
         this.products = products;
         this.onSelect = onSelect;
         this.onComplete = onComplete;
-        // this.lastThree = [];
+        this.lastThree = [];
         // this.imageDisplayed = [];
         // this.rounds = 25;
     }   

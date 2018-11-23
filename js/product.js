@@ -1,6 +1,6 @@
 import html from '../html.js';
 
-let template = function(product) {
+function makeTemplate() {
     return html`
         <li class="product">
             <h3 class="product-name">${product.name}</h3>
@@ -10,13 +10,14 @@ let template = function(product) {
 };
 
 class ProductCard {
-    constructor(product, onSelect) {
+    constructor(product, onSelect, onView) {
         this.product = product;
         this.onSelect = onSelect;
+        this.onView = onView;
     }
 
     render() {
-        let dom = template(this.product);
+        const dom = makeTemplate();
         this.li = dom.querySelector('li');
         let product = this.product;
 

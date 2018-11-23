@@ -2,7 +2,6 @@ import html from '../html.js';
 import productApi from '../data/product-api.js';
 import surveyApi from '../data/survey-api.js';
 import ProductSelector from './product-selector.js';
-// import ViewingChart from '../js/viewing-chart.js';
     
 function makeTemplate() { 
     return html`
@@ -31,7 +30,7 @@ class App {
             if(this.totalRounds === 25) {
                 window.location = '../user-summary.html';
             }
-            productSelector.update();
+            // productSelector.update();
         },
         product => {
             product.views++;
